@@ -42,12 +42,12 @@ bool Friends::runPattern() {
 			checkForTouch();
 			
 			if (modeInterruptRequested) {
-				rtt.println("friends modeinterrupt");
+				//rtt.println("friends modeinterrupt");
 				modeInterruptRequested = false;
 				return false;
 			}
 			if (buttonInterruptRequested) {
-				rtt.println("friends buttoninterrupt");
+				//rtt.println("friends buttoninterrupt");
 				modePushCounter = 0;
 				buttonInterruptRequested = false;
 				return false;

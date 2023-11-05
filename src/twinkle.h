@@ -90,7 +90,7 @@ bool Twinkle::runPattern() {
   }
 
   TwinkleMapPixels();
-  FastLED.show();  
-  FastLED.delay(20);
+  //FastLED.show();  
+  //FastLED.delay(20);
 
 }

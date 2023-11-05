@@ -1,3 +1,17 @@
+// #include "hardware/xosc.h"
+// #define PICO_XOSC_STARTUP_DELAY_MULTIPLIER 64
+#include "pico.h"
+#include "hardware/structs/xosc.h"
+
+
+// Allow lengthening startup delay to accommodate slow-starting oscillators
+
+// PICO_CONFIG: PICO_XOSC_STARTUP_DELAY_MULTIPLIER, Multiplier to lengthen xosc startup delay to accommodate slow-starting oscillators, type=int, min=1, default=1, group=hardware_xosc
+// #ifndef PICO_XOSC_STARTUP_DELAY_MULTIPLIER
+// #define PICO_BOOT_STAGE2_CHOOSE_GENERIC_03H 1
+// #define PICO_XOSC_STARTUP_DELAY_MULTIPLIER 64
+// #endif
+
 
 #include <FastLED_NeoMatrix.h>
 #include "fastled_config.h"
@@ -19,7 +33,7 @@ bool dropsModeInterruptRequested = false;
 #include "touch.h"
 
 
-uint8_t buttonPushCounter = 0;
+uint8_t buttonPushCounter = 1;
 // initial mode on boot.
 uint8_t modePushCounter = 0;
 
@@ -136,7 +150,7 @@ void Sparkle3(byte red, byte green, byte blue, int SpeedDelay) {
 }
 
 void changeMode() {
-  rtt.println("[*] long press");
+  //rtt.println("[*] long press");
   modeInterruptRequested = true;
   
   modePushCounter += 1;
@@ -159,7 +173,7 @@ void changeMode() {
 #include "crosshatch.h"
 //#include "testing.h"
 //#include "discostrobe.h"
-#include "twinkle.h"
+//#include "twinkle.h"
 
 void runFriends() {
   bool isRunning = true;
@@ -227,15 +241,16 @@ void runCrosshatch() {
   while (isRunning) isRunning = crosshatch.runPattern();
 }
 
-void runTwinkle() {
-  bool isRunning = true;
-  Twinkle twinkle = Twinkle();
-  while (isRunning) isRunning = twinkle.runPattern();
-}
+// void runTwinkle() {
+//   bool isRunning = true;
+//   Twinkle twinkle = Twinkle();
+//   while (isRunning) isRunning = twinkle.runPattern();
+// }
 
 
 
 void setup() {
+
 
   FastLED.addLeds<CHIPSET, LED_PIN, COLOR_ORDER>(leds, NUM_LEDS).setCorrection(TypicalSMD5050);
   
@@ -250,13 +265,13 @@ void setup() {
   //  Sparkle(random(255), random(255), random(255), 15);
   // }
   
-  flash_get_unique_id(UniqueID);
+  //flash_get_unique_id(UniqueID);
 
   Wire.begin(I2C_SLAVE_ADDRESS);
   Wire.onRequest(handleI2CRequest);
   Wire.onReceive(handleI2CReceive);
   
-  rtt.println("booted!");
+  //rtt.println("booted!");
 
 }
 
@@ -269,60 +284,60 @@ void loop() {
 
     switch (modePushCounter) {
       case 0:
-        rtt.println("[*] mode 1");
+        //rtt.println("[*] mode 1");
         runFriends();
         changeMode();
         break;
       case 1:
-        rtt.println("[*] mode 2");
+        //rtt.println("[*] mode 2");
         runMotion();
         changeMode();
         break;
       case 2:
-         rtt.println("[*] mode: fireworks2.");
+         //rtt.println("[*] mode: fireworks2.");
         runFireworks2();
         changeMode();
         break;
       case 3:
-       rtt.println("[*] mode fire.");
+       //rtt.println("[*] mode fire.");
         runFire();
         changeMode();
         break;
       case 4:
-        rtt.println("[*] mode drops.");
+        //rtt.println("[*] mode drops.");
         
         changeMode();
         break;
       case 5:
-        rtt.println("[*] mode: noise.");
+        //rtt.println("[*] mode: noise.");
         runNoise();
         changeMode();
         break;
       case 6:
-        rtt.println("[*] mode plasma.");
+        //rtt.println("[*] mode plasma.");
         runPlasma();
         changeMode();
         break;
       case 7:
-        rtt.println("[*] mode: snake.");
+        //rtt.println("[*] mode: snake.");
         runSnake();
         changeMode();
         break;
       
       case 8:
-       rtt.println("[*] mode ch");
+       //rtt.println("[*] mode ch");
         
         changeMode();
         break; 
 
       case 9:
-       rtt.println("[*] mode fs");
+       //rtt.println("[*] mode fs");
         runFS();
         changeMode();
         break;  
 
       case 10:
-       rtt.println("[*] mode matrix");
+       //rtt.println("[*] mode matrix");
         runTheMatrix();
         changeMode();
         break;

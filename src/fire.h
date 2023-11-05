@@ -42,7 +42,7 @@ bool Fire::runPattern() {
 
     if (modeInterruptRequested) {
         modeInterruptRequested = false;
-        rtt.println("FS mode interupt");
+        //rtt.println("FS mode interupt");
         return false;
     }
 
