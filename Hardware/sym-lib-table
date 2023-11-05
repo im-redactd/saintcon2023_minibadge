@@ -1,0 +1,5 @@
+(sym_lib_table
+  (lib (name "saintcon-minibadge")(type "Legacy")(uri "${KIPRJMOD}/lib/saintcon-minibadge.lib")(options "")(descr ""))
+  (lib (name "TC2050-IDC-NL")(type "Legacy")(uri "${KIPRJMOD}/lib/TC2050-IDC-NL.lib")(options "")(descr ""))
+  (lib (name "W25Q16JVUXIQ")(type "KiCad")(uri "${KIPRJMOD}/lib/W25Q16JVUXIQ.kicad_sym")(options "")(descr ""))
+)

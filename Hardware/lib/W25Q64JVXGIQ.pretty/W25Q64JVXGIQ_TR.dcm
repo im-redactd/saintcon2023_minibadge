@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP W25Q64JVXGIQ_TR
+D NOR Flash Serial (SPI, Dual SPI, Quad SPI) 3V/3.3V 64M-bit 8M x 8 6ns 8-Pin XSON EP T/R
+K
+F 
+$ENDCMP
+#
+#End Doc Library
