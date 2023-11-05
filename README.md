@@ -1,11 +1,13 @@
 # Saintcon 2023 RP2040 Minibadge
  Minibadge Software
 
-
+# This Branch
+A few of the minibadges would not boot after flashing. The assumption is a slight timing issue with the flash. This core which is more aligned with the Pico-SDK handles this skew better and boots the code. There needed to be some changes to handle the touch logic after replacing the arduino-mbed core.
 
 # Debugging
-launch.json entry
 
+launch.json entry
+```
 "configurations": [
         {
             "cwd": "${workspaceFolder}",
@@ -19,3 +21,4 @@ launch.json entry
             "showDevDebugOutput": "none",
             "servertype": "jlink"
         },
+    ```
