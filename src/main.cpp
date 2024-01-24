@@ -265,7 +265,7 @@ void setup() {
   //  Sparkle(random(255), random(255), random(255), 15);
   // }
   
-  //flash_get_unique_id(UniqueID);
+  flash_get_unique_id(UniqueID);
 
   Wire.begin(I2C_SLAVE_ADDRESS);
   Wire.onRequest(handleI2CRequest);
